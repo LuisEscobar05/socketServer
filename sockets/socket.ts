@@ -1,5 +1,5 @@
 import { Socket } from 'socket.io';
-import { SSL_OP_SINGLE_DH_USE } from 'constants';
+
 
 export const desconectar = (Cliente: Socket) => {
     Cliente.on('disconnect', ()=> {

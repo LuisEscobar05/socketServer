@@ -1,5 +1,5 @@
 import Server from './classes/server';
-import { SERVER_PORT } from './global/enviroment';
+import { SERVER_PORT, SERVER_HOST } from './global/enviroment';
 import router from './routes/router';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -17,5 +17,5 @@ server.app.use('/', router);
 server.app.use(cors({ origin: true, credentials: true }));
 
 server.start(() => {
-    console.log(`Servidor Corriendo en el puerto ${SERVER_PORT}`);
+    console.log(`Servidor ${SERVER_HOST} Corriendo en el puerto ${SERVER_PORT}`);
 });

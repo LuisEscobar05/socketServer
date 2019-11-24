@@ -18,6 +18,7 @@ const http_1 = __importDefault(require("http"));
 class Server {
     constructor() {
         this.app = express_1.default();
+        this.host = enviroment_1.SERVER_HOST;
         this.port = enviroment_1.SERVER_PORT;
         this.httServer = new http_1.default.Server(this.app);
         this.io = socket_io_1.default(this.httServer);
@@ -35,7 +36,7 @@ class Server {
         });
     }
     start(callback) {
-        this.httServer.listen(this.port, callback());
+        this.httServer.listen(this.host, this.port, callback());
     }
 }
 exports.default = Server;

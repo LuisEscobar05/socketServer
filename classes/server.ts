@@ -1,5 +1,5 @@
 import express from 'express';
-import { SERVER_PORT } from '../global/enviroment';
+import { SERVER_PORT, SERVER_HOST } from '../global/enviroment';
 
 import socketIO from 'socket.io'; // Es mi libreria de socket
 
@@ -12,12 +12,14 @@ export default class Server {
 
     public app: express.Application;
     public port: number;
+    public host: string;
 
     public io: socketIO.Server;
     private httServer : http.Server;
 
     private constructor (){
         this.app = express();
+        this.host = SERVER_HOST;
         this.port = SERVER_PORT;
 
         this.httServer = new http.Server(this.app);
@@ -43,7 +45,7 @@ export default class Server {
     }
 
     start(callback: Function){
-        this.httServer.listen(this.port, callback());
+        this.httServer.listen(this.host, this.port, callback());
     }
 
 }
